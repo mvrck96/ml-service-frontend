@@ -1,0 +1,4 @@
+loguru
+pydantic
+streamlit
+requests
