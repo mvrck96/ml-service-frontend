@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: ml-serice-frontend
+    image: ml-frontend
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports: 
+      - 8001:8001
+    env_file:
+      - .env
