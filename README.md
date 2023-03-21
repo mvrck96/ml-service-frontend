@@ -21,8 +21,11 @@
 
 1. `git clone <repo address>`
 2. `cd ml-service-frontend`
-3. `docker-compose up --build` -- запуск контейнера
-4. Адреса:
+3. `cp template.env .env` -- создать копию файла template.env с именем .env
+4. Изменить при необходимости переменные окружения
+5. При необходимости отредактировать файл `/.streamlit/config.toml`
+6. `docker-compose up --build` -- запуск контейнера
+7. Адреса:
     UI -- http://localhost:8001
 
 Для локального запуска:
