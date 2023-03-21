@@ -10,10 +10,9 @@ settings = get_settings()
 
 st.title("Time series prediction UI")
 
-csv_file = st.file_uploader(
-    "Upload csv file with time series data", type=["csv"]
-    )
+csv_file = st.file_uploader("Upload csv file with time series data", type=["csv"])
 
+# If file uploaded
 if csv_file:
     with st.form("main_form"):
         st.header("Prediction parameters")
@@ -21,16 +20,17 @@ if csv_file:
         df = pd.read_csv(csv_file)
         feature_name = st.selectbox("Pick a feature to predict", options=df.columns)
         smoothing_level = st.slider(
-            "Select smoothing level",
-            min_value=0.0, max_value=1.0, step=0.05, value=0.5
+            "Select smoothing level", min_value=0.0, max_value=1.0, step=0.05, value=0.5
         )
 
+        # Assemble payload for POST request
         payload = TimeSeries(
             feature=feature_name,
             data=list(df[feature_name].values),
             smoothing_level=smoothing_level,
         ).json()
 
+        # After button pressed
         if st.form_submit_button("Calculate metrics and make prediction"):
             session = requests.Session()
 
@@ -48,6 +48,7 @@ if csv_file:
             st.subheader("Prediction result")
 
             try:
+                # Send request
                 response = session.post(settings.ml_service_url, payload).json()
 
                 pred = round(response["predicted_value"], 3)
