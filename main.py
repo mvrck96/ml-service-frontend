@@ -62,4 +62,4 @@ if csv_file:
                 c22.markdown(f"`{pred}`")
 
             except requests.exceptions.ConnectionError as e:
-                st.warning("Can't connect to service !")
+                st.warning("Can't connect to backend service !")
