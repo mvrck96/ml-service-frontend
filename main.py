@@ -8,7 +8,17 @@ from src.logic import calculate_ts_metrics
 
 settings = get_settings()
 
-st.title("Time series prediction UI")
+# Set page title and icon
+st.set_page_config(
+    page_title="Time series prediction app",
+    page_icon=":8ball:",
+    menu_items={
+        "About": "https://mvrck.space/",
+        "Report a bug": "https://github.com/mvrck96/ml-service-frontend/issues/new"
+    }
+)
+
+st.title("📈 Time series prediction UI")
 
 csv_file = st.file_uploader("Upload csv file with time series data", type=["csv"])
 
