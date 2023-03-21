@@ -1,0 +1,10 @@
+[server]
+port = 8001
+maxUploadSize = 50
+
+
+[theme]
+base = "light"
+
+[browser]
+gatherUsageStats = false

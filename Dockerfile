@@ -12,9 +12,10 @@ COPY requirements.txt .
 
 COPY /src ./src/
 COPY main.py .
+COPY /.streamlit ./.streamlit
 
 RUN python -m pip install --upgrade pip
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD streamlit run main.py --server.port 8001
+CMD streamlit run main.py
